@@ -1,35 +1,50 @@
 import axios from "axios";
 
 const axiosInstance = axios.create({
-  baseURL: "http://localhost:5000",
+  baseURL: process.env.API_URL,
   headers: { "Content-Type": "application/json" }
 });
 
 export const state = () => ({
-  searchInput: "",
-  summoner: null
+  searchQuery: "",
+  summoner: null,
+  matches: [],
+  staticUrl:  process.env.STATIC_URL
 });
 
 export const mutations = {
   SET_SUMMONER: function(state, summoner) {
     state.summoner = summoner;
-  }
+  },
+  SET_MATCHES: function(state, matches) {
+    state.matches = matches;
+  },
 };
 
 export const actions = {
-  searchSummoner: async function({ commit }, searchInput) {
+  summonerSearch: async function({ commit }, searchQuery) {
     try {
-      const res = await axiosInstance.get(`/summoner?name=${searchInput}`);
-      console.log(res.data.summoner);
+      const res = await axiosInstance.get(`/summoner?name=${searchQuery}`);
       commit("SET_SUMMONER", res.data.summoner);
+      return res
     } catch (error) {
       console.log(error);
     }
-  }
+  },
+
+  summonerMatches: async function({ commit }, summonerId) {
+    try {
+      const res = await axiosInstance.get(`/matches?summonerId=${summonerId}`);
+      console.log(res.data.matches);
+      commit("SET_MATCHES", res.data.matches);
+    } catch (error) {
+      console.log(error);
+    }
+  },
 };
 
 export const getters = {
   getSummoner: function (state) {
     return state.summoner
-  }
+  },
 }

@@ -12,12 +12,16 @@
 import { mapState, mapActions, mapGetters } from "vuex";
 
 export default {
+  async asyncData({ params, store }) {
+    const name = params.name;
+    return { name };
+  },
   computed: {
     ...mapState(["staticUrl"]),
     ...mapGetters(["getSummoner"])
   },
   methods: {
-    ...mapActions(["summonerMatches"])
+    ...mapActions(["summonerSearch", "summonerMatches"])
   },
   mounted: function() {
     this.summonerMatches(this.getSummoner.accountId);

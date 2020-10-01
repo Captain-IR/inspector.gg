@@ -1,7 +1,7 @@
 <template>
   <div class="search text-center w-full">
     <form class="form" @submit.prevent="submitSearch">
-      <input v-model="searchInput" type="text" class="form-input p-3 " />
+      <input v-model="searchQuery" type="text" class="form-input p-3 " />
       <button
         type="submit"
         class="py-3 px-4 bg-green-600 hover:bg-green-500 text-white uppercase"
@@ -18,13 +18,19 @@ import { mapActions } from "vuex";
 export default {
   data: function() {
     return {
-      searchInput: ""
+      searchQuery: ""
     };
   },
   methods: {
-    ...mapActions(["searchSummoner"]),
+    ...mapActions(["summonerSearch"]),
     submitSearch: function() {
-      this.searchSummoner(this.searchInput);
+      this.summonerSearch(this.searchQuery)
+        .then(res => {
+          this.$router.push(`/summoner/${res.data.summoner.name}`);
+        })
+        .catch(err => {
+          console.log(err);
+        });
     }
   }
 };
