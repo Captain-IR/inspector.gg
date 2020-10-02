@@ -1,7 +1,3 @@
-// const getMatch = async id => {
-//   return await this.$axios.$get(`/match?matchId=${id}`);
-// };
-
 export const state = () => ({
   summoner: null,
   matches: [],
@@ -39,15 +35,6 @@ export const actions = {
       console.log(error);
     }
   }
-
-  // matchDetails: async function({ commit }, matchId) {
-  //   try {
-  //     const res = await axiosInstance.get(`/match?matchId=${matchId}`);
-  //     commit("SET_MATCHES_DETAIL", res.data);
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // }
 };
 
 export const getters = {

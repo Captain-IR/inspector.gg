@@ -5,6 +5,7 @@
       :key="match.matchId"
       :match="match"
       :staticUrl="staticUrl"
+      :summoner="summoner"
     />
   </div>
 </template>
@@ -12,7 +13,7 @@
 <script>
 import { mapGetters } from "vuex";
 export default {
-  props: ["staticUrl"],
+  props: ["summoner", "staticUrl"],
   computed: {
     ...mapGetters(["getMatches", "getNewMatches"])
   },

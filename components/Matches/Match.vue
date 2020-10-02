@@ -8,25 +8,29 @@
 
 <script>
 export default {
-  props: ["match", "staticUrl"],
+  props: ["summoner", "match", "staticUrl"],
   data: function() {
     return {
       game: null,
-      teams: [],
-      participants: [],
-      participantIdentities: []
+      champion: "",
+      win: false
     };
+  },
+  methods: {
+    getChampionById: async function(id) {
+      return this.$axios.$get(`/champion?id=${id}`);
+    },
+    winOrLoss: function(teamId) {}
   },
   mounted: async function() {
     const game = this.$axios.$get(`/match?id=${this.match.matchId}`);
-    const champion = this.$axios.$get(`/champion?id=${this.match.champion}`);
-    Promise.all([champion, game]).then(values => {
-      this.game = {
-        ...this.match,
-        champion: values[0].name,
-        ...values[1].match
-      };
-    });
+    const champion = this.getChampionById(this.match.champion);
+    const values = await Promise.all([champion, game]);
+    this.game = {
+      ...this.match,
+      champion: values[0],
+      ...values[1].match
+    };
   }
 };
 </script>

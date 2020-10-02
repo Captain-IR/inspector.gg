@@ -2,7 +2,7 @@
   <div class="bg-grey">
     <div class="container">
       <Profile :summoner="summoner" :staticUrl="staticUrl" />
-      <Matches :staticUrl="staticUrl" />
+      <Matches :summoner="summoner" :staticUrl="staticUrl" />
     </div>
   </div>
 </template>
