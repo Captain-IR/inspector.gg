@@ -1,39 +1,35 @@
 <template>
-  <div class="relative">
-    <div class="page h-screen blur"></div>
+  <div class="bg-grey">
     <div class="container">
-      <Navbar />
-      <Profile :getSummoner="getSummoner" :staticUrl="staticUrl" />
+      <Profile :summoner="summoner" :staticUrl="staticUrl" />
+      <Matches :staticUrl="staticUrl" />
     </div>
   </div>
 </template>
 
 <script>
-import { mapState, mapActions, mapGetters } from "vuex";
+import { mapState, mapActions } from "vuex";
 
 export default {
-  async asyncData({ params, store }) {
-    const name = params.name;
-    return { name };
+  asyncData: async function({ params, store, $axios }) {
+    const data = await $axios.$get(`/summoner?name=${params.name}`);
+    store.commit("SET_SUMMONER", data.summoner);
+    return { summoner: data.summoner };
   },
   computed: {
-    ...mapState(["staticUrl"]),
-    ...mapGetters(["getSummoner"])
+    ...mapState(["staticUrl"])
   },
   methods: {
-    ...mapActions(["summonerSearch", "summonerMatches"])
+    ...mapActions(["summonerMatches"])
   },
   mounted: function() {
-    this.summonerMatches(this.getSummoner.accountId);
+    this.summonerMatches(this.summoner.accountId);
   }
 };
 </script>
 
 <style scoped>
-.page {
-  background: url("~assets/league.jpg") no-repeat center center / cover;
-}
-.blur {
-  filter: blur(5px);
+.bg-grey {
+  background-color: #f3f3f3;
 }
 </style>

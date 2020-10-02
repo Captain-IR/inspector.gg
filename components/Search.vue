@@ -25,8 +25,8 @@ export default {
     ...mapActions(["summonerSearch"]),
     submitSearch: function() {
       this.summonerSearch(this.searchQuery)
-        .then(res => {
-          this.$router.push(`/summoner/${res.data.summoner.name}`);
+        .then(data => {
+          this.$router.push(`/summoner/${data.summoner.name}`);
         })
         .catch(err => {
           console.log(err);

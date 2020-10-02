@@ -11,14 +11,8 @@ html {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  overflow: hidden;
 }
 
 .container {
-  @apply min-h-screen mt-5 mx-auto px-24;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 1;
+  @apply min-h-screen mx-auto px-24;
 }

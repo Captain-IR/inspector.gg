@@ -1,8 +1,6 @@
 <template>
-  <div class="relative">
-    <div class="page h-screen"></div>
-    <div class="container">
-      <Navbar />
+  <div class="home">
+    <div class="container relative">
       <Search />
     </div>
   </div>
@@ -13,7 +11,8 @@ export default {};
 </script>
 
 <style scoped>
-.page {
+.home {
   background: url("~assets/league.jpg") no-repeat center center / cover;
+  height: 100vh;
 }
 </style>

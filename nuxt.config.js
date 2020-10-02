@@ -35,13 +35,14 @@ export default {
   ],
 
   // Axios module configuration (https://go.nuxtjs.dev/config-axios)
-  axios: {},
+  axios: {
+    baseURL: process.env.API_URL || "http://localhost:5000"
+  },
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)
   build: {},
 
   env: {
-    API_URL: process.env.API_URL || 'http://localhost:5000',
-    STATIC_URL: 'https://ddragon.leagueoflegends.com/cdn/10.20.1/img'
-  },
+    STATIC_URL: "https://ddragon.leagueoflegends.com/cdn/10.20.1/img"
+  }
 };

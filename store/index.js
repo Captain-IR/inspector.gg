@@ -1,15 +1,11 @@
-import axios from "axios";
-
-const axiosInstance = axios.create({
-  baseURL: process.env.API_URL,
-  headers: { "Content-Type": "application/json" }
-});
+// const getMatch = async id => {
+//   return await this.$axios.$get(`/match?matchId=${id}`);
+// };
 
 export const state = () => ({
-  searchQuery: "",
   summoner: null,
   matches: [],
-  staticUrl:  process.env.STATIC_URL
+  staticUrl: process.env.STATIC_URL
 });
 
 export const mutations = {
@@ -17,16 +13,19 @@ export const mutations = {
     state.summoner = summoner;
   },
   SET_MATCHES: function(state, matches) {
-    state.matches = matches;
+    state.matches = [...matches];
   },
+  SET_NEW_MATCHES: function(state, newMatches) {
+    console.log(newMatches);
+    state.newMatches = [...newMatches];
+  }
 };
 
 export const actions = {
   summonerSearch: async function({ commit }, searchQuery) {
     try {
-      const res = await axiosInstance.get(`/summoner?name=${searchQuery}`);
-      commit("SET_SUMMONER", res.data.summoner);
-      return res
+      const data = await this.$axios.$get(`/summoner?name=${searchQuery}`);
+      return data;
     } catch (error) {
       console.log(error);
     }
@@ -34,17 +33,31 @@ export const actions = {
 
   summonerMatches: async function({ commit }, summonerId) {
     try {
-      const res = await axiosInstance.get(`/matches?summonerId=${summonerId}`);
-      console.log(res.data.matches);
-      commit("SET_MATCHES", res.data.matches);
+      const data = await this.$axios.$get(`/matches?summonerId=${summonerId}`);
+      commit("SET_MATCHES", data.matches);
     } catch (error) {
       console.log(error);
     }
-  },
+  }
+
+  // matchDetails: async function({ commit }, matchId) {
+  //   try {
+  //     const res = await axiosInstance.get(`/match?matchId=${matchId}`);
+  //     commit("SET_MATCHES_DETAIL", res.data);
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // }
 };
 
 export const getters = {
-  getSummoner: function (state) {
-    return state.summoner
+  getSummoner: function(state) {
+    return state.summoner;
   },
-}
+  getMatches: function(state) {
+    return state.matches;
+  },
+  getNewMatches: function(state) {
+    return state.newMatches;
+  }
+};
