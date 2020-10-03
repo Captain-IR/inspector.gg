@@ -31,7 +31,7 @@ export default {
 
 <style scoped>
 .home {
-  background: url("~assets/league.jpg") no-repeat center center / cover;
+  background: url("~assets/league-minified.jpg") no-repeat center center / cover;
 }
 
 .bg-opacity {

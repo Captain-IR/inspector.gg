@@ -36,7 +36,7 @@ export default {
 
   // Axios module configuration (https://go.nuxtjs.dev/config-axios)
   axios: {
-    baseURL: process.env.API_URL || "http://localhost:5000"
+    baseURL: "https://inspectorgg-server.herokuapp.com/"
   },
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)
