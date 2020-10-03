@@ -14,7 +14,7 @@ export default {
   },
 
   // Global CSS (https://go.nuxtjs.dev/config-css)
-  css: ["~/css/main.css"],
+  css: ["~assets/styles/main.css"],
 
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
   plugins: [],
@@ -36,7 +36,7 @@ export default {
 
   // Axios module configuration (https://go.nuxtjs.dev/config-axios)
   axios: {
-    baseURL: "https://inspectorgg-server.herokuapp.com/"
+    baseURL: "https://inspectorgg-server.herokuapp.com"
   },
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)
@@ -48,5 +48,8 @@ export default {
   pageTransition: {
     name: "fade",
     mode: "out-in"
+  },
+  generate: {
+    fallback: true
   }
 };

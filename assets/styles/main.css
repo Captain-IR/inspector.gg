@@ -14,7 +14,7 @@ html {
 }
 
 .container {
-  @apply min-h-screen mx-auto px-48;
+  @apply min-h-screen mx-auto px-24;
   
 }
 
