@@ -44,5 +44,9 @@ export default {
 
   env: {
     STATIC_URL: "https://ddragon.leagueoflegends.com/cdn/10.20.1/img"
+  },
+  pageTransition: {
+    name: "fade",
+    mode: "out-in"
   }
 };

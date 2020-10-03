@@ -1,8 +1,10 @@
 <template>
-  <div class="bg-grey pb-6">
-    <div class="container">
-      <Profile :summoner="summoner" :staticUrl="staticUrl" />
-      <Matches :summoner="summoner" :staticUrl="staticUrl" />
+  <div class="home ">
+    <div class="bg-opacity pb-6">
+      <div class="container">
+        <Profile :summoner="summoner" :staticUrl="staticUrl" />
+        <Matches :summoner="summoner" :staticUrl="staticUrl" />
+      </div>
     </div>
   </div>
 </template>
@@ -24,7 +26,11 @@ export default {
 </script>
 
 <style scoped>
-.bg-grey {
-  background: rgba(51, 51, 51, 0.75);
+.home {
+  background: url("~assets/league.jpg") no-repeat center center / cover;
+}
+
+.bg-opacity {
+  background: rgba(7, 7, 32, 0.75);
 }
 </style>

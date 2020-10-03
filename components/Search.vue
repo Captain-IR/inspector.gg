@@ -1,12 +1,26 @@
 <template>
   <div class="search text-center w-full">
-    <form class="form" @submit.prevent="submitSearch">
-      <input v-model="searchQuery" type="text" class="form-input p-3 " />
-      <button
-        type="submit"
-        class="py-3 px-4 bg-green-600 hover:bg-green-500 text-white uppercase"
-      >
-        Search
+    <form class="form flex justify-center" @submit.prevent="submitSearch">
+      <select v-model="selected" class="form-select p-3">
+        <option value="AMERICA_NORTH">NA</option>
+        <option value="BRAZIL">BR</option>
+        <option value="EU_EAST">EUNE</option>
+        <option value="EU_WEST">EUW</option>
+        <option value="JAPAN">JP</option>
+        <option value="KOREA">KR</option>
+        <option value="OCEANIA">OCE</option>
+        <option value="RUSSIA">RU</option>
+        <option value="TURKEY">TK</option>
+      </select>
+      <input
+        v-model="searchQuery"
+        type="text"
+        class="form-input p-3"
+        placeholder="Search Your Summoner"
+        required
+      />
+      <button type="submit" class="form-submit bg-white p-3">
+        <img class="form-submit__img " src="~assets/search-icon.png" alt="" />
       </button>
     </form>
   </div>
@@ -18,7 +32,8 @@ import { mapActions } from "vuex";
 export default {
   data: function() {
     return {
-      searchQuery: ""
+      searchQuery: "",
+      selected: "EU_WEST"
     };
   },
   methods: {
@@ -45,8 +60,18 @@ export default {
   z-index: 2;
 }
 
+.form-select {
+  cursor: pointer;
+  border-radius: 30px 0 0 30px;
+}
+
+.form-submit {
+  outline: none;
+  border-radius: 0 30px 30px 0;
+}
+
 .form-input {
-  width: 25rem;
+  width: 30rem;
   outline: none;
 }
 </style>

@@ -1,7 +1,21 @@
 <template>
   <div class="navbar sticky top-0">
-    <div class="flex justify-between">
+    <div class="flex justify-between items-center">
       <h1>Inspector.gg</h1>
+      <!-- <form class="form" @submit.prevent="submitSearch">
+        <input
+          v-model="searchQuery"
+          type="text"
+          class="form-input p-1 text-black"
+          placeholder="Search Your Summoner"
+        />
+        <button
+          type="submit"
+          class="p-1 bg-green-600 hover:bg-green-500 uppercase"
+        >
+          Search
+        </button>
+      </form> -->
       <ul class="flex">
         <li class="mr-5"><nuxt-link to="/">Home</nuxt-link></li>
         <li class="mr-5"><nuxt-link to="/about">About</nuxt-link></li>
@@ -16,9 +30,9 @@ export default {};
 
 <style scoped>
 .navbar {
-  background-color: #333;
+  background-color: #070720;
   color: #fff;
   z-index: 1;
-  padding: 1rem;
+  padding: 0.5rem;
 }
 </style>
