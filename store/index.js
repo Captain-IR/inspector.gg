@@ -6,14 +6,13 @@ export const state = () => ({
 
 export const mutations = {
   SET_SUMMONER: function(state, summoner) {
-    state.summoner = summoner;
+    state.summoner = { ...summoner };
   },
   SET_MATCHES: function(state, matches) {
     state.matches = [...matches];
   },
-  SET_NEW_MATCHES: function(state, newMatches) {
-    console.log(newMatches);
-    state.newMatches = [...newMatches];
+  CLEAR_MATCHES: function(state) {
+    state.matches = [];
   }
 };
 
@@ -27,7 +26,7 @@ export const actions = {
     }
   },
 
-  summonerMatches: async function({ commit }, summonerId) {
+  summonerMatches: async function({ commit, dispatch }, summonerId) {
     try {
       const data = await this.$axios.$get(`/matches?summonerId=${summonerId}`);
       commit("SET_MATCHES", data.matches);
@@ -43,8 +42,5 @@ export const getters = {
   },
   getMatches: function(state) {
     return state.matches;
-  },
-  getNewMatches: function(state) {
-    return state.newMatches;
   }
 };
