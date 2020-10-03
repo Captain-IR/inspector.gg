@@ -21,7 +21,7 @@
 <script>
 import { mapGetters, mapActions } from "vuex";
 export default {
-  props: ["summoner", "staticUrl"],
+  props: ["summoner", "region", "staticUrl"],
   components: {
     Match: require("~/components/Matches/Match").default
   },
@@ -32,7 +32,10 @@ export default {
     ...mapActions(["summonerMatches"])
   },
   mounted: function() {
-    this.summonerMatches(this.summoner.accountId);
+    this.summonerMatches({
+      summonerId: this.summoner.accountId,
+      region: this.region
+    });
   }
 };
 </script>

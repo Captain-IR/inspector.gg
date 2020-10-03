@@ -17,18 +17,22 @@ export const mutations = {
 };
 
 export const actions = {
-  summonerSearch: async function({ commit }, searchQuery) {
+  summonerSearch: async function({ commit }, { searchQuery, region }) {
     try {
-      const data = await this.$axios.$get(`/summoner?name=${searchQuery}`);
+      const data = await this.$axios.$get(
+        `/summoner?name=${searchQuery}&region=${region}`
+      );
       return data;
     } catch (error) {
       console.log(error);
     }
   },
 
-  summonerMatches: async function({ commit, dispatch }, summonerId) {
+  summonerMatches: async function({ commit }, { summonerId, region }) {
     try {
-      const data = await this.$axios.$get(`/matches?summonerId=${summonerId}`);
+      const data = await this.$axios.$get(
+        `/matches?summonerId=${summonerId}&region=${region}`
+      );
       commit("SET_MATCHES", data.matches);
     } catch (error) {
       console.log(error);

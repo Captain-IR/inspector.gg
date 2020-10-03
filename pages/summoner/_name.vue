@@ -3,7 +3,7 @@
     <div class="bg-opacity pb-6">
       <div class="container">
         <Profile :summoner="summoner" :staticUrl="staticUrl" />
-        <Matches :summoner="summoner" :staticUrl="staticUrl" />
+        <Matches :summoner="summoner" :region="region" :staticUrl="staticUrl" />
       </div>
     </div>
   </div>
@@ -14,10 +14,14 @@ import { mapState } from "vuex";
 
 export default {
   asyncData: async function({ params, store, $axios }) {
-    const data = await $axios.$get(`/summoner?name=${params.name}`);
+    const summoner = params.name.split("-")[0];
+    const region = params.name.split("-")[1];
+    const data = await $axios.$get(
+      `/summoner?name=${summoner}&region=${region}`
+    );
     store.commit("CLEAR_MATCHES");
     store.commit("SET_SUMMONER", data.summoner);
-    return { summoner: data.summoner };
+    return { summoner: data.summoner, region };
   },
   computed: {
     ...mapState(["staticUrl"])

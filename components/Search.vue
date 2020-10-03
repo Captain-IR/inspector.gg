@@ -39,9 +39,12 @@ export default {
   methods: {
     ...mapActions(["summonerSearch"]),
     submitSearch: function() {
-      this.summonerSearch(this.searchQuery)
+      this.summonerSearch({
+        searchQuery: this.searchQuery,
+        region: this.selected
+      })
         .then(data => {
-          this.$router.push(`/summoner/${data.summoner.name}`);
+          this.$router.push(`/summoner/${data.summoner.name}-${this.selected}`);
         })
         .catch(err => {
           console.log(err);
