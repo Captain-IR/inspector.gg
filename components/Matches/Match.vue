@@ -3,7 +3,7 @@
     class="match bg-white mt-4"
     :class="getMainSummoner.win ? 'win' : 'loss'"
   >
-    <div class="info flex ">
+    <div class="info flex">
       <div class="info-type px-2 border-r-2">
         <div>{{ getMainSummoner.win ? "VECTORY" : "DEFEAT" }}</div>
       </div>
@@ -91,13 +91,13 @@
 export default {
   props: ["summoner", "match", "staticUrl"],
   computed: {
-    getMainSummoner: function() {
-      const mainSummoner = this.match.game.find(obj => {
+    getMainSummoner: function () {
+      const mainSummoner = this.match.game.find((obj) => {
         return obj.player.summonerName === this.summoner.name;
       });
       return mainSummoner;
-    }
-  }
+    },
+  },
 };
 </script>
 

@@ -20,7 +20,7 @@
         required
       />
       <button type="submit" class="form-submit bg-white p-3">
-        <img class="form-submit__img " src="~assets/search-icon.png" alt="" />
+        <img class="form-submit__img" src="~assets/search-icon.png" alt="" />
       </button>
     </form>
   </div>
@@ -30,27 +30,27 @@
 import { mapActions } from "vuex";
 
 export default {
-  data: function() {
+  data: function () {
     return {
       searchQuery: "",
-      selected: "EU_WEST"
+      selected: "EU_WEST",
     };
   },
   methods: {
     ...mapActions(["summonerSearch"]),
-    submitSearch: function() {
+    submitSearch: function () {
       this.summonerSearch({
         searchQuery: this.searchQuery,
-        region: this.selected
+        region: this.selected,
       })
-        .then(data => {
+        .then((data) => {
           this.$router.push(`/summoner/${data.summoner.name}-${this.selected}`);
         })
-        .catch(err => {
+        .catch((err) => {
           console.log(err);
         });
-    }
-  }
+    },
+  },
 };
 </script>
 
