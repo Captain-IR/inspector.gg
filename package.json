@@ -1,6 +1,9 @@
 {
-  "name": "inspector.gg",
+  "name": "leagous-web",
   "version": "1.0.0",
+  "description": "League of legends summoner matches, stats & items lookup",
+  "author": "Captain IR",
+  "license": "MIT",
   "private": true,
   "scripts": {
     "dev": "nuxt",

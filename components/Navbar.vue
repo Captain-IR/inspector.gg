@@ -1,7 +1,7 @@
 <template>
   <div class="navbar sticky top-0">
     <div class="flex justify-between items-center">
-      <h1>Inspector.gg</h1>
+      <h1>LeagousGG</h1>
       <!-- <form class="form" @submit.prevent="submitSearch">
         <input
           v-model="searchQuery"
