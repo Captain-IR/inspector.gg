@@ -36,7 +36,7 @@ export default {
 
   // Axios module configuration (https://go.nuxtjs.dev/config-axios)
   axios: {
-    baseURL: "https://leagous-server.herokuapp.com",
+    baseURL: "https://leagous-api.herokuapp.com",
   },
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)
